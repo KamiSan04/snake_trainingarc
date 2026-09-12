@@ -1,4 +1,4 @@
-# Snake RL 🐍
+# Snake RL 
 
 So this is a project where i built the classic snake game and then trained an AI to play it using reinforcement learning (specifically DQN - deep q network). Started as just wanting to make snake in pygame but then i got curious if i could make an AI learn to play it on its own, without me writing any strategy for it.
 
