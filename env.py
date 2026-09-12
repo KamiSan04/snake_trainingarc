@@ -12,6 +12,7 @@ class SnakeEnv:
         self.direction = (1, 0)
         self.food = self._spawn_food()
         self.done = False
+        self.frame_count = 0
         return self._get_state()
 
     def _spawn_food(self):
@@ -68,6 +69,8 @@ class SnakeEnv:
         return False
 
     def step(self, action):
+        self.frame_count += 1
+
         clockwise = [(1, 0), (0, 1), (-1, 0), (0, -1)]
         idx = clockwise.index(self.direction)
 
@@ -86,7 +89,7 @@ class SnakeEnv:
 
         reward = 0
 
-        if self._is_collision(new_head):
+        if self._is_collision(new_head) or self.frame_count > 100 * len(self.snake):
             self.done = True
             reward = -10
             return self._get_state(), reward, self.done
